@@ -6,7 +6,7 @@
 /*   By: stakaki <stakaki@student.42tokyo.j>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/08 21:52:36 by stakaki           #+#    #+#             */
-/*   Updated: 2021/05/08 22:48:47 by stakaki          ###   ########.fr       */
+/*   Updated: 2021/05/12 17:11:37 by stakaki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 //uのマイナス時の挙動
 int	main(void)
 {
-	ft_printf("%10.7d\n", 12345);
-	printf("%10.7d\n", 12345);
+	ft_printf("%.3s\n", "12345");
+	printf("%.3s\n", "12345");
+	system("leaks a.out");
 	return (0);
 }
 
@@ -35,7 +36,7 @@ int	ft_printf(const char *format, ...)
 	va_start(ap, format);
 	percent++;
 	specifier = st_strstr(percent, "diuxXcsp");
-	sentence = ft_set_str(ap, specifier);
+	sentence = st_set_str(ap, specifier);
 	period = st_strnchr(percent, '.', specifier);
 	if (period != NULL)
 	{
@@ -101,7 +102,7 @@ int	ft_printf(const char *format, ...)
 			len += 1;
 		}
 	}
-	write(1, '\0', 1);
+	write(1, NULL, 1);
 	va_end(ap);
 	return (len);
 }

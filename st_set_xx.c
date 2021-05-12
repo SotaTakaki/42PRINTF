@@ -1,7 +1,7 @@
 
 #include "ft_printf.h"
 
-char	*st_set_X(va_list ap)
+char	*st_set_xx(va_list ap)
 {
 	unsigned int	num;
 	int	digits;

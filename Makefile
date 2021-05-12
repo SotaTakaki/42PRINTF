@@ -6,7 +6,7 @@
 #    By: stakaki <stakaki@student.42tokyo.j>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/09 01:35:42 by stakaki           #+#    #+#              #
-#    Updated: 2021/04/26 23:49:50 by stakaki          ###   ########.fr        #
+#    Updated: 2021/05/12 16:45:57 by stakaki          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,9 +33,8 @@ SRCS = 	ft_printf.c\
 		st_cut_sentence.c\
 		ft_atoi.c\
 		ft_strjoin.c\
-		ft_strdog.c\
 		st_set_x.c\
-		st_set_X.c\
+		st_set_xx.c\
 		st_set_p.c\
 		st_count_sixteen.c\
 
