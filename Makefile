@@ -37,10 +37,12 @@ SRCS = 	ft_printf.c\
 		st_set_xx.c\
 		st_set_p.c\
 		st_count_sixteen.c\
-
+		st_make_sentence_1.c\
+		st_make_sentence_2.c\
+		
 OBJCS = $(SRCS:.c=.o)
 
-INCLUDE = ft_printf.h
+INCLUDE = ft_printf
 
 CC = gcc
 

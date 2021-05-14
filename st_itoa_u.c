@@ -1,13 +1,13 @@
 
 #include "ft_printf.h"
 
-char	*st_itoa_u(va_list ap)
+char	*st_itoa_u(va_list *ap)
 {
 	unsigned int	n;
 	int				digits;
 	char			*arg_n;
 
-	n = va_arg(ap, unsigned int);
+	n = va_arg(*ap, unsigned int);
 	digits = ft_count_digits(n) - 1;
 	arg_n = ft_malloc(n);
 	if (arg_n == NULL)

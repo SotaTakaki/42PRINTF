@@ -1,14 +1,14 @@
 
 #include "ft_printf.h"
 
-char	*st_itoa_di(va_list ap)
+char	*st_itoa_di(va_list *ap)
 {
 	int		n;
 	int		digits;
 	int		n_dev;
 	char	*arg_n;
 
-	n = va_arg(ap, int);
+	n = va_arg(*ap, int);
 	digits = ft_count_digits(n) - 1;
 	n_dev = (int)n;
 	arg_n = ft_malloc(n);

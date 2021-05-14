@@ -4,13 +4,11 @@ char	*ft_strdog(char *s1, char *s2, char *box);
 
 char	*ft_strjoin(char *s1, char *s2)
 {
-	int		i;
 	int		len_total;
 	char	*box;
 
 	if (s1 == NULL || s2 == NULL)
 		return (ft_strdup(""));
-	i = 0;
 	len_total = ft_strlen(s1) + ft_strlen(s2);
 	box = (char *)malloc(len_total * sizeof(char) + 1);
 	if (box == NULL)

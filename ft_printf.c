@@ -13,13 +13,6 @@
 #include "ft_printf.h"
 //ft_set_str:先頭の42を出せるようにしたい
 //uのマイナス時の挙動
-int	main(void)
-{
-	ft_printf("%.3s\n", "12345");
-	printf("%.3s\n", "12345");
-	system("leaks a.out");
-	return (0);
-}
 
 int	ft_printf(const char *format, ...)
 {
@@ -34,75 +27,39 @@ int	ft_printf(const char *format, ...)
 	percent = st_strchr(format, '%');
 	len = st_put_before_per(format, percent);
 	va_start(ap, format);
-	percent++;
-	specifier = st_strstr(percent, "diuxXcsp");
-	sentence = st_set_str(ap, specifier);
-	period = st_strnchr(percent, '.', specifier);
-	if (period != NULL)
+	while (percent)
 	{
-		if (*specifier == 'c' || *specifier == 's')
-			sentence = st_cut_sentence(sentence, specifier, period);
+		percent++;
+		specifier = st_strstr(percent, "diuxXcsp");
+		sentence = st_set_str(&ap, specifier);
+		period = st_strnchr(percent, '.', specifier);
+		if (period != NULL)
+			sentence = st_make_sentence_1(sentence, specifier, period, percent);
 		else
-			sentence = st_set_0(sentence, specifier, period);
-		if (*percent == '-')
+			sentence = st_make_sentence_2(sentence, specifier, percent);
+		len += ft_strlen(sentence);
+		write(1, sentence, ft_strlen(sentence));
+		percent = st_strchr(specifier, '%');
+		specifier++;
+		free(sentence);
+		sentence = NULL;
+		if (percent)
 		{
-			percent++;
-			sentence = st_set_rightspace(sentence, period, percent);
-			if (*percent == '0')
-				percent++;
+			while (specifier != percent)
+			{
+				write(1, specifier, 1);
+				specifier++;
+				len += 1;
+			}
 		}
-		else if (*percent == '0')
-		{
-			percent++;
-			if (*percent == '-')
-				sentence = st_set_rightspace(sentence, period, percent);
-		}
-		else
-			sentence = st_set_leftspace(sentence, period, percent);
 	}
-	else
+	while (*specifier != '\0')
 	{
-		if (*percent == '-')
-		{
-			percent++;
-			sentence = st_set_rightspace(sentence, specifier, percent);
-			if (*percent == '0')
-				percent++;
-		}
-		else if (*percent == '0')
-		{
-			percent++;
-			if (*percent == '-')
-				sentence = st_set_rightspace(sentence, specifier, percent);
-			else
-				sentence = st_set_0(sentence, specifier, percent);
-		}
-		else
-			sentence = st_set_leftspace(sentence, specifier, percent);
+		write(1, specifier, 1);
+		specifier++;
+		len += 1;
 	}
-	len += ft_strlen(sentence);
-	write(1, sentence, ft_strlen(sentence));
-	percent = st_strchr(specifier, '%');
-	specifier++;
-	if (percent)
-	{
-		while (specifier != percent)
-		{
-			write(1, specifier, 1);
-			specifier++;
-			len += 1;
-		}
-	}
-	else
-	{
-		while (*specifier != '\0')
-		{
-			write(1, specifier, 1);
-			specifier++;
-			len += 1;
-		}
-	}
-	write(1, NULL, 1);
+	write(1, "\0", 1);
 	va_end(ap);
 	return (len);
 }

@@ -12,5 +12,5 @@ char	*st_strchr(const char *str, int chr)
 			return ((char *)&str[i]);
 		i++;
 	}
-	return ((char *)&str[i]);
+	return (NULL);
 }
