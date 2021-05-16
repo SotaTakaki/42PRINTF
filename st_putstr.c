@@ -1,13 +1,13 @@
 
 #include "ft_printf.h"
-char	*ft_strdup(char *src);
+char	*st_strjoin(char *s1, char *s2);
 
 void	st_putstr(va_list *ap, t_list *info)
 {
 	char	*tmp;
 
 	tmp = (char *)va_arg(*ap, char*);
-	info->str = ft_strdup(tmp);
+	info->str = tmp;
 }
 
 /*char	*st_strdup(char *src)

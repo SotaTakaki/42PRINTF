@@ -11,7 +11,6 @@ void    st_make_str(t_list *info, va_list *ap)
 		st_make_acc_else(info);
 	st_make_field(info);
 	info->all_len += ft_strlen(info->str);
-	printf("%s\n", info->str);
 	write(1, info->str, ft_strlen(info->str));
 }
 

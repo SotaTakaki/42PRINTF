@@ -1,4 +1,5 @@
 #include "ft_printf.h"
+char	*ft_strdup(char *src);
 
 void    st_initialize(t_list *info)
 {
