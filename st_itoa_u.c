@@ -1,15 +1,18 @@
 
 #include "ft_printf.h"
+unsigned int	st_count_digits_unsigned(unsigned int n);
+char	*st_malloc_unsigned(unsigned int n);
+
 
 char	*st_itoa_u(va_list *ap)
 {
-	unsigned int	n;
-	int				digits;
-	char			*arg_n;
+	unsigned int		n;
+	int					digits;
+	char				*arg_n;
 
 	n = va_arg(*ap, unsigned int);
-	digits = ft_count_digits(n) - 1;
-	arg_n = ft_malloc(n);
+	digits = st_count_digits_unsigned(n) - 1;
+	arg_n = st_malloc_unsigned(n);
 	if (arg_n == NULL)
 		return (NULL);
 	while (n >= 10)
@@ -20,6 +23,35 @@ char	*st_itoa_u(va_list *ap)
 	}
 	arg_n[digits] = n + '0';
 	digits--;
-	printf("%s\n", arg_n);
 	return (arg_n);
+}
+
+unsigned int	st_count_digits_unsigned(unsigned int n)
+{
+	unsigned int	n_dev;
+	unsigned int	digits;
+
+	n_dev = n;
+	digits = 0;
+	if (n == 0)
+		return (1);
+	while (n_dev > 0)
+	{
+		n_dev /= 10;
+		digits++;
+	}
+	return (digits);
+}
+
+char	*st_malloc_unsigned(unsigned int n)
+{
+	unsigned int digits;
+	char	*range;
+
+	digits = st_count_digits_unsigned(n);
+	range = (char *)malloc(digits * sizeof(char) + 1);
+	if (range == NULL)
+		return (NULL);
+	range[digits] = '\0';
+	return (range);
 }

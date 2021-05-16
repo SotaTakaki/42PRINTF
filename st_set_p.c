@@ -1,5 +1,6 @@
 
 #include "ft_printf.h"
+int	st_count_sixteen(unsigned int num);
 
 char	*st_set_p(va_list *ap)
 {
@@ -23,4 +24,17 @@ char	*st_set_p(va_list *ap)
 	str[0] = '0';
 	str[1] = '0';
 	return (str);
+}
+
+int	st_count_sixteen(unsigned int num)
+{
+	int	digits;
+
+	digits = 1;
+	while (num > 16)
+	{
+		num /= 16;
+		digits++;
+	}
+	return (digits);
 }

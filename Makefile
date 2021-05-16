@@ -13,36 +13,31 @@
 NAME = libftprintf.a
 
 SRCS = 	ft_printf.c\
-		st_set_str.c\
+		st_initialize.c\
 		st_put_before_per.c\
-		st_strchr.c\
-		st_strnchr.c\
+		st_check_info.c\
+		st_set_width.c\
+		st_put_after_spe.c\
+		st_make_str.c\
 		st_itoa_di.c\
 		st_itoa_u.c\
 		st_putchr.c\
 		st_putstr.c\
-		ft_count_digits.c\
-		ft_malloc.c\
-		ft_strdup.c\
-		ft_strlen.c\
-		st_strstr.c\
-		st_set_0.c\
-		st_set_leftspace.c\
-		st_make_width.c\
-		st_set_rightspace.c\
-		st_cut_sentence.c\
-		ft_atoi.c\
-		ft_strjoin.c\
 		st_set_x.c\
 		st_set_xx.c\
 		st_set_p.c\
-		st_count_sixteen.c\
-		st_make_sentence_1.c\
-		st_make_sentence_2.c\
+		st_make_acc_di.c\
+		st_make_acc_else.c\
+		st_make_field.c\
+		st_forget_info.c\
+
+
+
 		
+
 OBJCS = $(SRCS:.c=.o)
 
-INCLUDE = ft_printf
+INCLUDE = printf3
 
 CC = gcc
 

@@ -11,55 +11,22 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-//ft_set_str:先頭の42を出せるようにしたい
-//uのマイナス時の挙動
 
 int	ft_printf(const char *format, ...)
 {
 	va_list	ap;
-	size_t	len;
-	char	*percent;
-	char	*specifier;
-	char	*period;
-	char	*sentence;
+	t_list	info;
 
-	sentence = NULL;
-	percent = st_strchr(format, '%');
-	len = st_put_before_per(format, percent);
+	st_initialize(&info);
+	st_put_before_per(format, &info);
 	va_start(ap, format);
-	while (percent)
+	while (*(info.percent) != '\0')
 	{
-		percent++;
-		specifier = st_strstr(percent, "diuxXcsp");
-		sentence = st_set_str(&ap, specifier);
-		period = st_strnchr(percent, '.', specifier);
-		if (period != NULL)
-			sentence = st_make_sentence_1(sentence, specifier, period, percent);
-		else
-			sentence = st_make_sentence_2(sentence, specifier, percent);
-		len += ft_strlen(sentence);
-		write(1, sentence, ft_strlen(sentence));
-		percent = st_strchr(specifier, '%');
-		specifier++;
-		free(sentence);
-		sentence = NULL;
-		if (percent)
-		{
-			while (specifier != percent)
-			{
-				write(1, specifier, 1);
-				specifier++;
-				len += 1;
-			}
-		}
+		st_check_info(info.percent, &info);
+		st_set_width(&info, &ap);
+		st_make_str(&info, &ap);
+		st_put_after_spe(&info);
+		st_forget_info(&info);
 	}
-	while (*specifier != '\0')
-	{
-		write(1, specifier, 1);
-		specifier++;
-		len += 1;
-	}
-	write(1, "\0", 1);
-	va_end(ap);
-	return (len);
+	return (info.all_len);
 }

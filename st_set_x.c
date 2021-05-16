@@ -1,11 +1,12 @@
 
 #include "ft_printf.h"
+int	st_count_sixteen(unsigned int num);
 
 char	*st_set_x(va_list *ap)
 {
 	unsigned int	num;
 	int	digits;
-	char			set[17] = "0123456789abcdef";
+	const char	set[17] = "0123456789abcdef";
 	char			*str;
 
 	num = va_arg(*ap, unsigned int);

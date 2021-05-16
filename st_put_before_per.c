@@ -1,11 +1,25 @@
 
 #include "ft_printf.h"
 
-size_t	st_put_before_per(const char *start, char *percent)
+void	st_put_before_per(const char *format, t_list *info)
 {
-	size_t	len;
+	size_t	i;
+	size_t	j;
 
-	len = percent - start;
-	write(1, start, len);
-	return (len);	
+	i = 0;
+	j = 0;
+	while (format[i] != '\0')
+	{
+		if (format[i] == '%' && format[i + 1] != '%')
+			break ;
+		if (format[i] == '%' && format[i + 1] == '%')
+		{
+			i++;
+			j++;
+		}
+		write(1, &format[i], 1);
+		i++;
+	}
+	info->all_len += i - j;
+	info->percent = &format[i];
 }
