@@ -46,7 +46,7 @@ int	st_atoi(const char *str)
 			minus = minus * -1;
 		i++;
 	}
-	while (str[i] == '0')
+	while (str[i] == '0' || str[i] == '-')
 		i++;
 	while (str[i] >= '0' && str[i] <= '9' && str[i] != '\0')
 	{

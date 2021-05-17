@@ -45,7 +45,26 @@ char	*st_strstr(const char *str, const char *to_find)
 
 void    st_check_flag(const char *percent, t_list *info)
 {
-	if ((percent[1] == '0' && percent[2] == '-') ||
+	int	i;
+
+	i = 1;
+	while (percent[i] == '0' || percent[i] == '-')
+	{
+		if (percent[i] == '0')
+		{
+			info->flag = 2;
+			i++;
+		}
+		if (percent[i] == '-')
+		{
+			info->flag = 1;
+			while(percent[i] == '0' || percent[i] == '-')
+				i++;
+		}
+	}
+	info->percent = &((info->percent)[i - 1]);
+}
+/*	if ((percent[1] == '0' && percent[2] == '-') ||
 		(percent[1] == '-' && percent[2] == '0'))
 	{
 		info->flag = 1;
@@ -61,4 +80,4 @@ void    st_check_flag(const char *percent, t_list *info)
         info->flag = 1;
 		info->percent = &((info->percent)[1]);
 	}
-}
+}*/
