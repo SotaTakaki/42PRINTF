@@ -5,14 +5,14 @@ void    st_make_acc_di(t_list *info)
 	int		i;
 	char	*zero;
 
-	i = info->accuracy - ft_strlen(info->str);
-	zero = ft_strdup("0");
+	i = info->accuracy - st_strlen(info->str);
+	zero = st_strdup("0");
     if (info->accuracy != -1)
 	{
 		if (info->accuracy == 0 && info->str[0] == '0')
 		{
 			free(info->str);
-			info->str = ft_strdup("");
+			info->str = st_strdup("");
 			info->sub_flag = 1;
 		}
 		while (i > 0)
@@ -20,9 +20,9 @@ void    st_make_acc_di(t_list *info)
 			info->str = st_strjoin(zero, info->str);
 			i--;
 		}
-	}
 	if (info->minus == 1)
 		info->str = st_strjoin("-", info->str);
+	}
 	free(zero);
 	zero = NULL;
 }
@@ -45,12 +45,12 @@ char	*st_strjoin(char *s1, char *s2)
 	char	*box;
 
 	if (s1 == NULL || s2 == NULL)
-		return (ft_strdup(""));
-	len_total = ft_strlen(s1) + ft_strlen(s2);
+		return (st_strdup(""));
+	len_total = st_strlen(s1) + st_strlen(s2);
 	box = (char *)malloc(len_total * sizeof(char) + 1);
 	if (box == NULL)
 		return (NULL);
-	box = ft_strdog(s1, s2, box);
+	box = st_strdog(s1, s2, box);
 //	free(s2);
 //	s2 = NULL;
 	return (box);
@@ -83,7 +83,7 @@ char	*st_strdup(char *src)
 	char	*box;
 	int		i;
 
-	box = (char *)malloc(sizeof(char) * ft_strlen(src) + 1);
+	box = (char *)malloc(sizeof(char) * st_strlen(src) + 1);
 	if (box == NULL)
 		return (0);
 	i = 0;

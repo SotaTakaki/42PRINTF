@@ -6,7 +6,7 @@
 /*   By: stakaki <stakaki@student.42tokyo.j>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/08 21:52:36 by stakaki           #+#    #+#             */
-/*   Updated: 2021/05/12 17:11:37 by stakaki          ###   ########.fr       */
+/*   Updated: 2021/05/17 23:50:22 by stakaki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,7 @@ int	ft_printf(const char *format, ...)
 		st_put_after_spe(&info);
 		st_forget_info(&info);
 	}
+	free(info.str);
+	info.str = NULL;
 	return (info.all_len);
 }

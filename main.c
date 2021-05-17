@@ -3,8 +3,8 @@
 
 int	main(void)
 {
-	printf("%000012u\n", 0);
-	ft_printf("%000012u\n", 0);
+	printf("%-00000-----*i", 12);
+	ft_printf("ft:%-00000-----*i", 12);
 	system("leaks a.out");
 	return (0);
 }

@@ -6,8 +6,16 @@ void    st_make_field(t_list *info)
     int i;
 
     i = info->field - st_strlen(info->str);
+	if (info->minus == 1 && info->accuracy == -1)
+	{
+		i -= 1;
+		if (info->flag == 0)
+			info->str = st_strjoin("-", info->str);
+	}
     if (i > 0)
         st_join_machine(i, info);
+	if (info->flag != 0 && info->accuracy == -1 && info->minus == 1)
+		info->str = st_strjoin("-", info->str);
 }
 
 void    st_join_machine(int i, t_list *info)
@@ -35,7 +43,7 @@ void    st_join_machine(int i, t_list *info)
 	}
     else if/* ((info->specifier[0] == 'd' || info->specifier[0] == 'i' || info->specifier[0] == 's') &&*/ ((info->accuracy == -1) || (info->sub_flag != 1))
 	{
-    	while (i - info->minus > 0)
+    	while (i > 0)
         {
         	info->str = st_strjoin(zero, info->str);
             i--;
