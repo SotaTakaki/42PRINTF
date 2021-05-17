@@ -1,8 +1,4 @@
 #include "ft_printf.h"
-size_t    ft_strlen(char *s);
-char	*st_strjoin(char *s1, char *s2);
-char	*ft_strdog(char *s1, char *s2, char *box);
-char	*ft_strdup(char *src);
 
 void    st_make_acc_di(t_list *info)
 {
@@ -31,7 +27,7 @@ void    st_make_acc_di(t_list *info)
 	zero = NULL;
 }
 
-size_t	ft_strlen(char *s)
+size_t	st_strlen(char *s)
 {
 	size_t	n;
 
@@ -60,7 +56,7 @@ char	*st_strjoin(char *s1, char *s2)
 	return (box);
 }
 
-char	*ft_strdog(char *s1, char *s2, char *box)
+char	*st_strdog(char *s1, char *s2, char *box)
 {
 	int	i;
 	int	j;
@@ -82,7 +78,7 @@ char	*ft_strdog(char *s1, char *s2, char *box)
 	return (box);
 }
 
-char	*ft_strdup(char *src)
+char	*st_strdup(char *src)
 {
 	char	*box;
 	int		i;

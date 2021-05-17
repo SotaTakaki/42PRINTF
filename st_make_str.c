@@ -1,7 +1,5 @@
 #include "ft_printf.h"
 void    st_set_str(t_list *info, va_list *ap);
-size_t    ft_strlen(char *s);
-char	*ft_strdup(char *str);
 
 void    st_make_str(t_list *info, va_list *ap)
 {
@@ -15,8 +13,8 @@ void    st_make_str(t_list *info, va_list *ap)
 	else
 		st_make_acc_else(info);
 	st_make_field(info);
-	info->all_len += ft_strlen(info->str);
-	write(1, info->str, ft_strlen(info->str));
+	info->all_len += st_strlen(info->str);
+	write(1, info->str, st_strlen(info->str));
 }
 
 void    st_set_str(t_list *info, va_list *ap)

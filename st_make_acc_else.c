@@ -1,7 +1,4 @@
 #include "ft_printf.h"
-size_t    ft_strlen(char *s);
-char	*ft_strdup(char *s);
-char	*st_strjoin(char *s1, char *s2);
 
 void    st_make_acc_else(t_list *info)
 {
@@ -10,13 +7,13 @@ void    st_make_acc_else(t_list *info)
 
 	if (info->accuracy == 0 && *(info->str) == '0')
 	{
-		tmp = ft_strdup("");
+		tmp = st_strdup("");
 		info->str = tmp;
 		info->sub_flag = 1;
 	}
     if (info->accuracy > 0)
     {
-        i = info->accuracy - ft_strlen(info->str);
+        i = info->accuracy - st_strlen(info->str);
 		while (i > 0)
 		{
 			info->str = st_strjoin("0", info->str);

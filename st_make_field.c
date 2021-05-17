@@ -1,15 +1,11 @@
 #include "ft_printf.h"
-size_t    ft_strlen(char *s);
 void    st_join_machine(int i, t_list *info);
-char	*st_strjoin(char *s1, char *s2);
-char	*ft_strdog(char *s1, char *s2, char *box);
-char	*ft_strdup(char *src);
 
 void    st_make_field(t_list *info)
 {
     int i;
 
-    i = info->field - ft_strlen(info->str);
+    i = info->field - st_strlen(info->str);
     if (i > 0)
         st_join_machine(i, info);
 }
@@ -19,8 +15,8 @@ void    st_join_machine(int i, t_list *info)
 	char	*brank;
 	char	*zero;
 
-	brank = ft_strdup(" ");
-	zero = ft_strdup("0");
+	brank = st_strdup(" ");
+	zero = st_strdup("0");
 	if (info->flag == 0 || (info->flag == 2 && info->accuracy != -1))// && (info->sub_flag != -1))
     {
     	while (i > 0)

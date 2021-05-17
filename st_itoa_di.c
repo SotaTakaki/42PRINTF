@@ -8,7 +8,7 @@ char	*st_itoa_di(va_list *ap, t_list *info)
 	long long		n;
 	long long		digits;
 	long long		n_dev;
-	char	*arg_n;
+	char			*arg_n;
 
 	n = va_arg(*ap, int);
 	digits = st_count_digits(n) - 1;

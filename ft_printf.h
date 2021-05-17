@@ -41,5 +41,10 @@ void    st_make_acc_s(t_list *info);
 void    st_make_acc_else(t_list *info);
 void    st_make_field(t_list *info);
 void    st_forget_info(t_list *info);
+size_t    st_strlen(char *s);
+char	*st_strjoin(char *s1, char *s2);
+char	*st_strdog(char *s1, char *s2, char *box);
+char	*st_strdup(char *src);
+int	st_count_sixteen(unsigned int num);
 
 #endif

@@ -3,7 +3,6 @@
 unsigned int	st_count_digits_unsigned(unsigned int n);
 char	*st_malloc_unsigned(unsigned int n);
 
-
 char	*st_itoa_u(va_list *ap)
 {
 	unsigned int		n;

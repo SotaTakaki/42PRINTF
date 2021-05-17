@@ -1,6 +1,5 @@
 
 #include "ft_printf.h"
-int	st_count_sixteen(unsigned int num);
 
 char	*st_set_p(va_list *ap)
 {
