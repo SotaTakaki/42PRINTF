@@ -17,18 +17,18 @@ void    st_make_acc_di(t_list *info)
 		{
 			free(info->str);
 			info->str = ft_strdup("");
+			info->sub_flag = 1;
 		}
 		while (i > 0)
 		{
 			info->str = st_strjoin(zero, info->str);
 			i--;
-			info->sub_flag = 1;
 		}
 	}
-	free(zero);
-	zero = NULL;
 	if (info->minus == 1)
 		info->str = st_strjoin("-", info->str);
+	free(zero);
+	zero = NULL;
 }
 
 size_t	ft_strlen(char *s)
@@ -55,8 +55,8 @@ char	*st_strjoin(char *s1, char *s2)
 	if (box == NULL)
 		return (NULL);
 	box = ft_strdog(s1, s2, box);
-	free(s2);
-	s2 = NULL;
+//	free(s2);
+//	s2 = NULL;
 	return (box);
 }
 

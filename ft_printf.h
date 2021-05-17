@@ -14,6 +14,7 @@ typedef struct s_list
     const char    *specifier;
     int     flag;
     int     sub_flag;
+	int		zero_flag;
     int     field;
     int     accuracy;
     int     minus;
@@ -36,6 +37,7 @@ char	*st_set_x(va_list *ap);
 char	*st_set_xx(va_list *ap);
 char	*st_set_p(va_list *ap);
 void    st_make_acc_di(t_list *info);
+void    st_make_acc_s(t_list *info);
 void    st_make_acc_else(t_list *info);
 void    st_make_field(t_list *info);
 void    st_forget_info(t_list *info);

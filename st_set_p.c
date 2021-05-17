@@ -6,7 +6,7 @@ char	*st_set_p(va_list *ap)
 {
 	unsigned int	num;
 	int	digits;
-	char			set[17] = "0123456789ABCDEF";
+	const char			set[17] = "0123456789abcdef";
 	char			*str;
 
 	num = va_arg(*ap, unsigned int);
@@ -22,7 +22,7 @@ char	*st_set_p(va_list *ap)
 	}
 	str[digits] = set[num];
 	str[0] = '0';
-	str[1] = '0';
+	str[1] = 'x';
 	return (str);
 }
 

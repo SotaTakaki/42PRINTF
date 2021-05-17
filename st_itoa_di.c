@@ -5,9 +5,9 @@ char	*st_malloc(int n);
 
 char	*st_itoa_di(va_list *ap, t_list *info)
 {
-	int		n;
-	int		digits;
-	int		n_dev;
+	long long		n;
+	long long		digits;
+	long long		n_dev;
 	char	*arg_n;
 
 	n = va_arg(*ap, int);
@@ -33,7 +33,7 @@ char	*st_itoa_di(va_list *ap, t_list *info)
 
 int	st_count_digits(int	n)
 {
-	long	n_dev;
+	long long	n_dev;
 	int		digits;
 
 	n_dev = n;

@@ -1,13 +1,18 @@
 #include "ft_printf.h"
 void    st_set_str(t_list *info, va_list *ap);
 size_t    ft_strlen(char *s);
+char	*ft_strdup(char *str);
 
 void    st_make_str(t_list *info, va_list *ap)
 {
     st_set_str(info, ap);
     if (info->specifier[0] == 'd' || info->specifier[0] == 'i')
-        st_make_acc_di(info);
+	{
+		st_make_acc_di(info);
+	}
 	else if (info->specifier[0] == 's')
+		st_make_acc_s(info);
+	else
 		st_make_acc_else(info);
 	st_make_field(info);
 	info->all_len += ft_strlen(info->str);

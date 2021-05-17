@@ -6,7 +6,14 @@ void    st_set_width(t_list *info, va_list *ap)
 	if (info->percent)
 	{
     	if ((info->percent)[1] == '*')
+		{
         	info->field = va_arg(*ap, int);
+			if (info->field < 0)
+			{
+				info->flag = 1;
+				info->field *= -1;
+			}
+		}
  	 	else
         	info->field = st_atoi(info->percent);
 	}
@@ -23,8 +30,8 @@ void    st_set_width(t_list *info, va_list *ap)
 
 int	st_atoi(const char *str)
 {
-	int			i;
-	int			minus;
+	size_t		i;
+	size_t		minus;
 	size_t		answer;
 
 	i = 1;
@@ -39,6 +46,8 @@ int	st_atoi(const char *str)
 			minus = minus * -1;
 		i++;
 	}
+	while (str[i] == '0')
+		i++;
 	while (str[i] >= '0' && str[i] <= '9' && str[i] != '\0')
 	{
 		answer = answer * 10;

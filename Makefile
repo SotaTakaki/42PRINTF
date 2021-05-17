@@ -6,7 +6,7 @@
 #    By: stakaki <stakaki@student.42tokyo.j>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/09 01:35:42 by stakaki           #+#    #+#              #
-#    Updated: 2021/05/12 16:45:57 by stakaki          ###   ########.fr        #
+#    Updated: 2021/05/17 08:46:18 by stakaki          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,16 +28,13 @@ SRCS = 	ft_printf.c\
 		st_set_p.c\
 		st_make_acc_di.c\
 		st_make_acc_else.c\
+		st_make_acc_s.c\
 		st_make_field.c\
 		st_forget_info.c\
 
-
-
-		
-
 OBJCS = $(SRCS:.c=.o)
 
-INCLUDE = printf3
+INCLUDE = ft_printf.h
 
 CC = gcc
 

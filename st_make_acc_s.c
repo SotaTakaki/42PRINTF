@@ -2,12 +2,12 @@
 size_t    ft_strlen(char *s);
 char	*ft_strdup(char *s);
 
-void    st_make_acc_else(t_list *info)
+void    st_make_acc_s(t_list *info)
 {
     int     i;
     char    *tmp;
 
-	if (info->accuracy == 0 && info->str == 0)
+	if (info->accuracy == 0)
 	{
 		tmp = ft_strdup("");
 		info->str = tmp;
