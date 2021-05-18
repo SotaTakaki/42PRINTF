@@ -20,6 +20,6 @@ void	st_put_before_per(const char *format, t_list *info)
 		write(1, &format[i], 1);
 		i++;
 	}
-	info->all_len += i - j;
-	info->percent = &format[i];
+		info->all_len += i - j;
+		info->percent = &format[i];
 }

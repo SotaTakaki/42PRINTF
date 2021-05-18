@@ -33,9 +33,7 @@ size_t	st_strlen(char *s)
 
 	n = 0;
 	while (s[n] != '\0')
-	{
 		n++;
-	}
 	return (n);
 }
 
@@ -83,9 +81,9 @@ char	*st_strdup(char *src)
 	char	*box;
 	int		i;
 
-	box = (char *)malloc(sizeof(char) * st_strlen(src) + 1);
+	box = (char *)malloc(sizeof(char) * (st_strlen(src) + 1));
 	if (box == NULL)
-		return (0);
+		return (NULL);
 	i = 0;
 	while (src[i] != '\0')
 	{

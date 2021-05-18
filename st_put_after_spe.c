@@ -7,18 +7,18 @@ void	st_put_after_spe(t_list *info)
 
 	i = 1;
 	j = 0;
-	while ((info->specifier)[i] != '\0')
+	while (info->specifier[i] != '\0')
 	{
-		if ((info->specifier)[i] == '%' && (info->specifier)[i + 1] != '%')
+		if (info->specifier[i] == '%' && info->specifier[i + 1] != '%')
 			break ;
-		if ((info->specifier)[i] == '%' && (info->specifier)[i + 1] == '%')
+		if (info->specifier[i] == '%' && info->specifier[i + 1] == '%')
 		{
 			i++;
 			j++;
 		}
-		write(1, &(info->specifier)[i], 1);
+		write(1, &(info->specifier[i]), 1);
 		i++;
 	}
 	info->all_len += i - j - 1;
-	info->percent = &(info->specifier)[i];
+	info->percent = &(info->specifier[i]);
 }

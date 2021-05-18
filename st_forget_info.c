@@ -2,7 +2,7 @@
 
 void    st_forget_info(t_list *info)
 {
-//    free(info->str);
+    free(info->str);
     info->str = NULL;
     info->period = NULL;
     info->specifier = NULL;
