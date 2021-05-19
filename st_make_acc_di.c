@@ -1,13 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   st_make_acc_di.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: stakaki <stakaki@student.42tokyo.j>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/19 14:40:32 by stakaki           #+#    #+#             */
+/*   Updated: 2021/05/19 15:14:00 by stakaki          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "ft_printf.h"
 
-void    st_make_acc_di(t_list *info)
+void	st_make_acc_di(t_list *info)
 {
 	int		i;
 	char	*zero;
 
 	i = info->accuracy - st_strlen(info->str);
 	zero = st_strdup("0");
-    if (info->accuracy != -1)
+	if (info->accuracy != -1)
 	{
 		if (info->accuracy == 0 && info->str[0] == '0')
 		{
@@ -20,8 +31,8 @@ void    st_make_acc_di(t_list *info)
 			info->str = st_strjoin(zero, info->str);
 			i--;
 		}
-	if (info->minus == 1)
-		info->str = st_strjoin("-", info->str);
+		if (info->minus == 1)
+			info->str = st_strjoin("-", info->str);
 	}
 	free(zero);
 	zero = NULL;
@@ -49,8 +60,6 @@ char	*st_strjoin(char *s1, char *s2)
 	if (box == NULL)
 		return (NULL);
 	box = st_strdog(s1, s2, box);
-//	free(s2);
-//	s2 = NULL;
 	return (box);
 }
 

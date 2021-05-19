@@ -6,10 +6,9 @@
 /*   By: stakaki <stakaki@student.42tokyo.j>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/08 21:52:36 by stakaki           #+#    #+#             */
-/*   Updated: 2021/05/18 22:52:45 by stakaki          ###   ########.fr       */
+/*   Updated: 2021/05/19 14:34:55 by stakaki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "ft_printf.h"
 
 int	ft_printf(const char *format, ...)
@@ -17,10 +16,6 @@ int	ft_printf(const char *format, ...)
 	va_list	ap;
 	t_list	info;
 
-//	if (format == NULL)
-//		return (0);
-//	if (*format == '\0')
-//		return (0);
 	st_initialize(&info);
 	st_put_before_per(format, &info);
 	if (info.percent == NULL)

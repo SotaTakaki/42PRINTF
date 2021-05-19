@@ -1,7 +1,17 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   st_itoa_u.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: stakaki <stakaki@student.42tokyo.j>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/19 14:40:14 by stakaki           #+#    #+#             */
+/*   Updated: 2021/05/19 15:22:58 by stakaki          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "ft_printf.h"
 unsigned int	st_count_digits_unsigned(unsigned int n);
-char	*st_malloc_unsigned(unsigned int n);
+char			*st_malloc_unsigned(unsigned int n);
 
 char	*st_itoa_u(va_list *ap)
 {
@@ -44,8 +54,8 @@ unsigned int	st_count_digits_unsigned(unsigned int n)
 
 char	*st_malloc_unsigned(unsigned int n)
 {
-	unsigned int digits;
-	char	*range;
+	unsigned int	digits;
+	char			*range;
 
 	digits = st_count_digits_unsigned(n);
 	range = (char *)malloc(digits * sizeof(char) + 1);

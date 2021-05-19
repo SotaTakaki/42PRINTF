@@ -1,10 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   st_make_str.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: stakaki <stakaki@student.42tokyo.j>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/19 14:47:55 by stakaki           #+#    #+#             */
+/*   Updated: 2021/05/19 14:48:24 by stakaki          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "ft_printf.h"
-void    st_set_str(t_list *info, va_list *ap);
+void	st_set_str(t_list *info, va_list *ap);
 
-void    st_make_str(t_list *info, va_list *ap)
+void	st_make_str(t_list *info, va_list *ap)
 {
-    st_set_str(info, ap);
-    if (info->specifier[0] == 'd' || info->specifier[0] == 'i')
+	st_set_str(info, ap);
+	if (info->specifier[0] == 'd' || info->specifier[0] == 'i')
 	{
 		st_make_acc_di(info);
 	}
@@ -20,7 +31,7 @@ void    st_make_str(t_list *info, va_list *ap)
 	write(1, info->str, info->str_len);
 }
 
-void    st_set_str(t_list *info, va_list *ap)
+void	st_set_str(t_list *info, va_list *ap)
 {
 	if (*(info->specifier) == 'd' || *(info->specifier) == 'i')
 		info->str = st_itoa_di(ap, info);

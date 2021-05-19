@@ -1,14 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   st_check_info.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: stakaki <stakaki@student.42tokyo.j>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/19 14:38:11 by stakaki           #+#    #+#             */
+/*   Updated: 2021/05/19 15:09:40 by stakaki          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "ft_printf.h"
 char	*st_strchr(const char *str, const char *specifier, int chr);
 char	*st_strstr(const char *str, const char *to_find);
-void    st_check_flag(const char *percent, t_list *info);
+void	st_check_flag(const char *percent, t_list *info);
 
-
-void    st_check_info(const char *percent, t_list *info)
+void	st_check_info(const char *percent, t_list *info)
 {
-    st_check_flag(percent, info);
-    info->specifier = st_strstr(percent, "diuxXcsp");
-    info->period = st_strchr(percent, info->specifier, '.');
+	st_check_flag(percent, info);
+	info->specifier = st_strstr(percent, "diuxXcsp");
+	info->period = st_strchr(percent, info->specifier, '.');
 }
 
 char	*st_strchr(const char *str, const char *specifier, int chr)
@@ -47,7 +57,7 @@ char	*st_strstr(const char *str, const char *to_find)
 	return (NULL);
 }
 
-void    st_check_flag(const char *percent, t_list *info)
+void	st_check_flag(const char *percent, t_list *info)
 {
 	int	i;
 
@@ -64,26 +74,9 @@ void    st_check_flag(const char *percent, t_list *info)
 		if (percent[i] == '-')
 		{
 			info->flag = 1;
-			while(percent[i] == '0' || percent[i] == '-')
+			while (percent[i] == '0' || percent[i] == '-')
 				i++;
 		}
 	}
 	info->percent = &(info->percent[i - 1]);
 }
-/*	if ((percent[1] == '0' && percent[2] == '-') ||
-		(percent[1] == '-' && percent[2] == '0'))
-	{
-		info->flag = 1;
-		info->percent = &((info->percent)[2]);
-	}
-	else if (percent[1] == '0' && percent[2] != '-')
-	{
-		info->flag = 2;
-		info->percent = &((info->percent)[1]);
-	}
-	else if (percent[1] == '-')
-	{
-        info->flag = 1;
-		info->percent = &((info->percent)[1]);
-	}
-}*/

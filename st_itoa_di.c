@@ -1,6 +1,16 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   st_itoa_di.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: stakaki <stakaki@student.42tokyo.j>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/19 14:39:50 by stakaki           #+#    #+#             */
+/*   Updated: 2021/05/19 15:21:47 by stakaki          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "ft_printf.h"
-int	st_count_digits(int	n);
+int		st_count_digits(int	n);
 char	*st_malloc(int n);
 
 char	*st_itoa_di(va_list *ap, t_list *info)
@@ -34,7 +44,7 @@ char	*st_itoa_di(va_list *ap, t_list *info)
 int	st_count_digits(int	n)
 {
 	long long	n_dev;
-	int		digits;
+	int			digits;
 
 	n_dev = n;
 	digits = 0;
