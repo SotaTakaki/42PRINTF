@@ -46,5 +46,7 @@ char			*st_strjoin(char *s1, char *s2);
 char			*st_strdog(char *s1, char *s2, char *box);
 char			*st_strdup(char *src);
 int				st_count_sixteen(unsigned int num);
+void			st_join_str(char *join, t_list *info, int i);
+void			st_cut_str(t_list *info);
 
 #endif

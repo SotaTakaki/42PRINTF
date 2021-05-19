@@ -6,40 +6,46 @@
 /*   By: stakaki <stakaki@student.42tokyo.j>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 14:50:33 by stakaki           #+#    #+#             */
-/*   Updated: 2021/05/19 14:51:36 by stakaki          ###   ########.fr       */
+/*   Updated: 2021/05/19 17:17:47 by stakaki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
-int	st_atoi(const char *str);
+int		st_atoi(const char *str);
+void	st_check_ast(t_list *info);
 
 void	st_set_width(t_list *info, va_list *ap)
 {
 	if (info->percent)
 	{
-		if ((info->percent)[1] == '*')
+		if (info->percent[1] == '*')
 		{
 			info->field = va_arg(*ap, int);
-			if (info->field < 0)
-			{
-				info->flag = 1;
-				info->field *= -1;
-			}
+			st_check_ast(info);
 		}
 		else
 			info->field = st_atoi(info->percent);
 	}
 	if (info->period)
 	{
-		if ((info->period)[1] == '*')
+		if (info->period[1] == '*')
 		{
 			info->accuracy = va_arg(*ap, int);
 			if (info->accuracy < 0)
 				info->accuracy = -1;
 		}
-		else if ((info->period)[1] == (info->specifier)[0])
+		else if (info->period[1] == info->specifier[0])
 			info->accuracy = 0;
 		else
 			info->accuracy = st_atoi(info->period);
+	}
+}
+
+void	st_check_ast(t_list *info)
+{
+	if (info->field < 0)
+	{
+		info->flag = 1;
+		info->field *= -1;
 	}
 }
 

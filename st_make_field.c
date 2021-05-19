@@ -6,7 +6,7 @@
 /*   By: stakaki <stakaki@student.42tokyo.j>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 14:45:05 by stakaki           #+#    #+#             */
-/*   Updated: 2021/05/19 14:47:39 by stakaki          ###   ########.fr       */
+/*   Updated: 2021/05/19 16:48:12 by stakaki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -37,13 +37,7 @@ void	st_join_machine(int i, t_list *info)
 	brank = st_strdup(" ");
 	zero = st_strdup("0");
 	if (info->flag == 0 || (info->flag == 2 && info->accuracy != -1))
-	{
-		while (i > 0)
-		{
-			info->str = st_strjoin(brank, info->str);
-			i--;
-		}
-	}
+		st_join_str(brank, info, i);
 	else if (info->flag == 1)
 	{
 		while (i > 0)
@@ -53,15 +47,18 @@ void	st_join_machine(int i, t_list *info)
 		}
 	}
 	else if ((info->accuracy == -1) || (info->sub_flag != 1))
-	{
-		while (i > 0)
-		{
-			info->str = st_strjoin(zero, info->str);
-			i--;
-		}
-	}
+		st_join_str(zero, info, i);
 	free(brank);
 	brank = NULL;
 	free(zero);
 	zero = NULL;
+}
+
+void	st_join_str(char *join, t_list *info, int i)
+{
+	while (i > 0)
+	{
+		info->str = st_strjoin(join, info->str);
+		i--;
+	}
 }
