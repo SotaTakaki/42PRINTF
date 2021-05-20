@@ -6,12 +6,12 @@
 /*   By: stakaki <stakaki@student.42tokyo.j>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 14:39:50 by stakaki           #+#    #+#             */
-/*   Updated: 2021/05/19 15:21:47 by stakaki          ###   ########.fr       */
+/*   Updated: 2021/05/20 12:24:12 by stakaki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 int		st_count_digits(int	n);
-char	*st_malloc(int n);
+char	*st_malloc(int n, t_list *info);
 
 char	*st_itoa_di(va_list *ap, t_list *info)
 {
@@ -23,7 +23,7 @@ char	*st_itoa_di(va_list *ap, t_list *info)
 	n = va_arg(*ap, int);
 	digits = st_count_digits(n) - 1;
 	n_dev = n;
-	arg_n = st_malloc(n);
+	arg_n = st_malloc(n, info);
 	if (arg_n == NULL)
 		return (NULL);
 	if (n_dev < 0)
@@ -62,7 +62,7 @@ int	st_count_digits(int	n)
 	return (digits);
 }
 
-char	*st_malloc(int n)
+char	*st_malloc(int n, t_list *info)
 {
 	int		digits;
 	char	*range;
@@ -70,7 +70,10 @@ char	*st_malloc(int n)
 	digits = st_count_digits(n);
 	range = (char *)malloc(digits * sizeof(char) + 1);
 	if (range == NULL)
+	{
+		info->error = 1;
 		return (NULL);
+	}
 	range[digits] = '\0';
 	return (range);
 }

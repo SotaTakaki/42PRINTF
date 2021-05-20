@@ -6,14 +6,14 @@
 /*   By: stakaki <stakaki@student.42tokyo.j>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 14:40:14 by stakaki           #+#    #+#             */
-/*   Updated: 2021/05/19 15:22:58 by stakaki          ###   ########.fr       */
+/*   Updated: 2021/05/20 12:46:45 by stakaki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 unsigned int	st_count_digits_unsigned(unsigned int n);
-char			*st_malloc_unsigned(unsigned int n);
+char			*st_malloc_unsigned(unsigned int n, t_list *info);
 
-char	*st_itoa_u(va_list *ap)
+char	*st_itoa_u(va_list *ap, t_list *info)
 {
 	unsigned int		n;
 	int					digits;
@@ -21,7 +21,7 @@ char	*st_itoa_u(va_list *ap)
 
 	n = va_arg(*ap, unsigned int);
 	digits = st_count_digits_unsigned(n) - 1;
-	arg_n = st_malloc_unsigned(n);
+	arg_n = st_malloc_unsigned(n, info);
 	if (arg_n == NULL)
 		return (NULL);
 	while (n >= 10)
@@ -52,7 +52,7 @@ unsigned int	st_count_digits_unsigned(unsigned int n)
 	return (digits);
 }
 
-char	*st_malloc_unsigned(unsigned int n)
+char	*st_malloc_unsigned(unsigned int n, t_list *info)
 {
 	unsigned int	digits;
 	char			*range;
@@ -60,7 +60,10 @@ char	*st_malloc_unsigned(unsigned int n)
 	digits = st_count_digits_unsigned(n);
 	range = (char *)malloc(digits * sizeof(char) + 1);
 	if (range == NULL)
+	{
+		info->error = 1;
 		return (NULL);
+	}
 	range[digits] = '\0';
 	return (range);
 }

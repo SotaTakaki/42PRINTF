@@ -6,12 +6,12 @@
 /*   By: stakaki <stakaki@student.42tokyo.j>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 14:51:49 by stakaki           #+#    #+#             */
-/*   Updated: 2021/05/19 15:17:44 by stakaki          ###   ########.fr       */
+/*   Updated: 2021/05/20 12:43:54 by stakaki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-char	*st_set_x(va_list *ap)
+char	*st_set_x(va_list *ap, t_list *info)
 {
 	unsigned int	num;
 	int				digits;
@@ -21,6 +21,11 @@ char	*st_set_x(va_list *ap)
 	num = va_arg(*ap, unsigned int);
 	digits = st_count_sixteen(num);
 	str = (char *)malloc(digits + 1);
+	if (str == NULL)
+	{
+		info->error = 1;
+		return (NULL);
+	}
 	str[digits] = '\0';
 	digits--;
 	while (num > 16)

@@ -6,7 +6,7 @@
 /*   By: stakaki <stakaki@student.42tokyo.j>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 14:41:04 by stakaki           #+#    #+#             */
-/*   Updated: 2021/05/19 17:05:26 by stakaki          ###   ########.fr       */
+/*   Updated: 2021/05/20 12:38:47 by stakaki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -16,7 +16,7 @@ void	st_make_acc_else(t_list *info)
 	int		i;
 	char	*tmp;
 
-	tmp = st_strdup("");
+	tmp = st_strdup("", info);
 	if (info->accuracy == 0 && *(info->str) == '0')
 	{
 		info->str = tmp;
@@ -38,6 +38,11 @@ void	st_cut_str(t_list *info)
 
 	i = 0;
 	tmp = (char *)malloc(info->accuracy + 1);
+	if (tmp == NULL)
+	{
+		info->error = 1;
+		return ;
+	}
 	tmp[info->accuracy] = '\0';
 	while (info->accuracy > 0)
 	{
