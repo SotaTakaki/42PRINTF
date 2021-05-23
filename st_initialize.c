@@ -6,7 +6,7 @@
 /*   By: stakaki <stakaki@student.42tokyo.j>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 14:39:10 by stakaki           #+#    #+#             */
-/*   Updated: 2021/05/20 12:18:12 by stakaki          ###   ########.fr       */
+/*   Updated: 2021/05/23 22:17:25 by stakaki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -20,6 +20,7 @@ void	st_initialize(t_list *info)
 	info->flag = 0;
 	info->sub_flag = 0;
 	info->zero_flag = 0;
+	info->null_flag = 0;
 	info->field = 0;
 	info->accuracy = -1;
 	info->minus = 0;

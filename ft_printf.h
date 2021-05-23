@@ -16,6 +16,7 @@ typedef struct s_list
 	int			flag;
 	int			sub_flag;
 	int			zero_flag;
+	int			null_flag;
 	int			field;
 	int			accuracy;
 	int			minus;
@@ -33,7 +34,7 @@ void			st_put_after_spe(t_list *info);
 int				st_make_str(t_list *info, va_list *ap);
 char			*st_itoa_di(va_list *ap, t_list *info);
 char			*st_itoa_u(va_list *ap, t_list *info);
-unsigned char	*st_putchr(va_list *ap, t_list *info);
+void			st_putchr(va_list *ap, t_list *info);
 void			st_putstr(va_list *ap, t_list *info);
 char			*st_set_x(va_list *ap, t_list *info);
 char			*st_set_xx(va_list *ap, t_list *info);

@@ -6,7 +6,7 @@
 /*   By: stakaki <stakaki@student.42tokyo.j>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 14:43:04 by stakaki           #+#    #+#             */
-/*   Updated: 2021/05/20 12:39:06 by stakaki          ###   ########.fr       */
+/*   Updated: 2021/05/24 00:32:02 by stakaki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -18,6 +18,8 @@ void	st_make_acc_s(t_list *info)
 
 	if (info->accuracy == 0)
 	{
+		free(info->str);
+		info->str = NULL;
 		tmp = st_strdup("", info);
 		info->str = tmp;
 		info->sub_flag = 1;

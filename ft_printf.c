@@ -6,7 +6,7 @@
 /*   By: stakaki <stakaki@student.42tokyo.j>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/08 21:52:36 by stakaki           #+#    #+#             */
-/*   Updated: 2021/05/20 12:53:02 by stakaki          ###   ########.fr       */
+/*   Updated: 2021/05/23 22:37:47 by stakaki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -27,8 +27,6 @@ int	ft_printf(const char *format, ...)
 	{
 		st_check_info(info.percent, &info);
 		st_set_width(&info, &ap);
-		if (info.field == INT_MAX || info.accuracy == INT_MAX)
-			return (-1);
 		i = st_make_str(&info, &ap);
 		if (i == 1)
 			return (-1);

@@ -6,7 +6,7 @@
 /*   By: stakaki <stakaki@student.42tokyo.j>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 14:45:05 by stakaki           #+#    #+#             */
-/*   Updated: 2021/05/20 12:41:01 by stakaki          ###   ########.fr       */
+/*   Updated: 2021/05/24 00:26:40 by stakaki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -80,6 +80,6 @@ char	*st_strjoin2(char *s1, char *s2, t_list *info)
 	}
 	box = st_strdog(s1, s2, box);
 	free(s1);
-	s2 = NULL;
+	s1 = NULL;
 	return (box);
 }
